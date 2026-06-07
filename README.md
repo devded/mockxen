@@ -1,16 +1,58 @@
-# React + Vite
+# mockxen 🌟
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A premium, fully client-side browser and mobile screenshot mockup generator with dynamic ambient glows and 3D parallax tilt effects.
 
-Currently, two official plugins are available:
+![mockxen Banner](public/default_dashboard.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Dynamic Ambient Glow**: Customizable background styling with preset gradients or custom color blends.
+- **3D Mouse Parallax Tilt**: Smooth, interactive 3D perspective rotation on hover that reacts to your mouse cursor position.
+- **Multiple Device Frame Options**: Choose between macOS-style Chrome browser frames, realistic MacBook Pro casings, or mobile screen sizes.
+- **Zero Server Overhead**: 100% client-side rendering utilizing `html-to-image` for high-fidelity exports.
+- **Micro-Animations**: Clean and responsive hover transitions built on a flexible vanilla CSS Design System.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Framework**: [React](https://react.dev/) + [Vite](https://vite.dev/)
+- **Styling**: Vanilla CSS Design System with custom design tokens for absolute control and flexibility.
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Image Export**: [html-to-image](https://github.com/bubkoo/html-to-image)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+### Installation
+
+Clone the repository and install the dependencies:
+
+```bash
+npm install
+```
+
+### Run Locally
+
+Launch the Vite development server:
+
+```bash
+npm run dev
+```
+
+### Production Build
+
+Build the optimized application bundle for production:
+
+```bash
+npm run build
+```
+
+### Preview Build
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## License
+
+MIT License. See [LICENSE](LICENSE) for more details.

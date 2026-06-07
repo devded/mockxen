@@ -143,7 +143,7 @@ function App() {
       });
 
       const link = document.createElement('a');
-      link.download = `mockupify-${deviceType}-${Date.now()}.png`;
+      link.download = `mockxen-${deviceType}-${Date.now()}.png`;
       link.href = dataUrl;
       link.click();
     } catch (error) {
@@ -179,7 +179,7 @@ function App() {
           <div className="logo-icon">
             <Sparkles size={18} />
           </div>
-          <span className="logo-text">Mockupify</span>
+          <span className="logo-text">mockxen</span>
         </div>
 
         <div className="header-actions">
