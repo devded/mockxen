@@ -1,8 +1,8 @@
-# mockxen 🌟
+# MockXen 🌟
 
 > A premium, fully client-side browser and mobile screenshot mockup generator with dynamic ambient glows and 3D parallax tilt effects.
 
-![mockxen Banner](public/default_dashboard.png)
+![MockXen Banner](public/default_dashboard.png)
 
 ## Features
 

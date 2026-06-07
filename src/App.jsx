@@ -179,7 +179,7 @@ function App() {
           <div className="logo-icon">
             <Sparkles size={18} />
           </div>
-          <span className="logo-text">mockxen</span>
+          <span className="logo-text">MockXen</span>
         </div>
 
         <div className="header-actions">
