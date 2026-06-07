@@ -1,0 +1,902 @@
+/* 
+  Mockupify — CSS Design System & Utilities
+  Built using vanilla CSS for premium design aesthetics.
+*/
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  
+  /* Color Palette */
+  --bg-primary: #0a0b10;
+  --bg-secondary: rgba(18, 20, 29, 0.7);
+  --bg-tertiary: rgba(30, 32, 45, 0.8);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(99, 102, 241, 0.6);
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --brand-primary: #6366f1;
+  --brand-secondary: #a855f7;
+  --brand-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  
+  /* Dynamic Variable for ambient color shadow */
+  --ambient-color: rgba(99, 102, 241, 0.35);
+  
+  /* Glassmorphism details */
+  --glass-bg: rgba(20, 22, 33, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  --glass-blur: blur(12px);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography helper rules */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Layout Shell */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background-color: rgba(10, 11, 16, 0.85);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 10;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--brand-gradient);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  background: linear-gradient(to right, #ffffff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: var(--font-display);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-sans);
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--brand-gradient);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.45);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(45, 48, 65, 0.9);
+  border-color: var(--text-muted);
+}
+
+/* Main Dashboard Workspace */
+.app-workspace {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Left sidebar controls */
+.app-sidebar {
+  width: 380px;
+  background-color: rgba(13, 15, 24, 0.95);
+  border-right: 1px solid var(--border-color);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+  z-index: 5;
+}
+
+/* Main preview content area */
+.app-preview-area {
+  flex: 1;
+  background-color: #0f1016;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow: auto;
+  position: relative;
+}
+
+/* Custom control groupings */
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.control-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control-value {
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Custom Toggle Tabs (pills selector) */
+.toggle-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  padding: 8px 4px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-family: var(--font-sans);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.tab-btn.active {
+  background-color: var(--brand-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+/* Background Presets Grid */
+.background-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.bg-preset-box {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-preset-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.bg-preset-box.active {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 1px var(--brand-primary), 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+/* Sliders styling */
+.slider-control {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  outline: none;
+  margin: 8px 0;
+  transition: background 0.3s;
+}
+
+.slider-control::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--brand-primary);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
+  transition: transform 0.1s;
+}
+
+.slider-control::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #ffffff;
+}
+
+/* Custom upload field */
+.upload-area {
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.01);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.upload-area:hover, .upload-area.dragging {
+  border-color: var(--brand-primary);
+  background-color: rgba(99, 102, 241, 0.04);
+}
+
+.upload-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--brand-primary);
+  opacity: 0.8;
+}
+
+/* Screenshot size hint box */
+.size-hint-box {
+  background: rgba(99, 102, 241, 0.07);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.size-hint-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #818cf8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.size-hint-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.size-hint-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.size-hint-badge {
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-family: 'Outfit', monospace;
+  color: #c7d2fe;
+  background: rgba(99, 102, 241, 0.15);
+  padding: 3px 8px;
+  border-radius: 5px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.size-hint-note {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding-top: 2px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.upload-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.upload-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* 🖼️ Preview Canvas (Export Target) */
+.canvas-wrapper {
+  padding: 20px;
+  display: inline-block;
+  border-radius: 16px;
+  /* No box-shadow here — device frames carry their own shadows */
+  transition: transform 0.1s ease-out; /* 3D parallax resets smoothly */
+  position: relative;
+  overflow: visible;
+}
+
+.canvas-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Custom shadow / glow layout wrapper */
+.parallax-container {
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Dynamic Ambient Glow overlay element */
+.ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(-40px);
+  width: 90%;
+  height: 90%;
+  border-radius: 30px;
+  background: var(--ambient-color);
+  filter: blur(60px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, background 0.8s ease;
+}
+
+.ambient-glow.active {
+  opacity: 1;
+}
+
+/* Device Frames Construction */
+.device-frame {
+  transform-style: preserve-3d;
+  border-radius: inherit;
+  transition: box-shadow 0.3s ease;
+  /* box-shadow handled per-device below */
+}
+
+/* 1. MacOS Chrome Browser Mockup */
+.device-browser {
+  background-color: #1e1e24;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 680px; /* Default starting width */
+  max-width: 90vw;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  transform: translateZ(20px); /* 3D layer pop */
+}
+
+/* Browser light variant styling */
+.device-browser.light-theme {
+  background-color: #f1f5f9;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+.browser-header {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  user-select: none;
+}
+
+.device-browser.light-theme .browser-header {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.browser-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.dot-red { background-color: #ef4444; }
+.dot-yellow { background-color: #f59e0b; }
+.dot-green { background-color: #10b981; }
+
+.browser-address-bar {
+  flex: 1;
+  height: 26px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+}
+
+.device-browser.light-theme .browser-address-bar {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.02);
+  color: #64748b;
+}
+
+.browser-address-input {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 11px;
+  width: 80%;
+  text-align: center;
+  outline: none;
+}
+
+.browser-nav-icons {
+  display: flex;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.browser-nav-icons svg {
+  width: 14px;
+  height: 14px;
+}
+
+.browser-content {
+  position: relative;
+  overflow: hidden;
+  background-color: #12131a;
+  aspect-ratio: 16/10;
+}
+
+/* Children of browser-content always fill absolutely */
+.browser-content > img,
+.browser-content > .empty-placeholder,
+.browser-content > .reflection-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.device-browser.light-theme .browser-content {
+  background-color: #ffffff;
+}
+
+/* 2. MacBook Pro Mockup — Realistic Shape */
+.device-macbook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 680px;
+  max-width: 92vw;
+  transform: translateZ(20px);
+  /* drop-shadow removed — only the base has its own box-shadow */
+}
+
+/* The lid / screen housing */
+.macbook-lid {
+  width: 100%;
+  background: #1c1c1e;
+  border-radius: 14px 14px 3px 3px;
+  /* Top bezel: 16px gives proper room for camera dot to breathe;
+     sides thin at 9px; bottom chin much thicker at 22px */
+  padding: 16px 9px 22px 9px;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 0 0 0.5px rgba(0,0,0,0.9);
+}
+
+/* Camera dot — centered horizontally, vertically centered in the 16px top bezel */
+.macbook-camera-dot {
+  position: absolute;
+  top: 6px;          /* (16px bezel - 6px dot) / 2 ≈ 5px — sits centered */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3a3a3c;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.6),           /* outer dark ring */
+    0 0 0 2px rgba(255,255,255,0.04);    /* subtle light halo */
+  z-index: 3;
+}
+
+/* Actual screen area inside the lid padding */
+.macbook-display {
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #0d0d0f;
+  position: relative; /* anchor for absolute-fill children */
+}
+
+/* All direct children of macbook-display fill 100% absolutely */
+.macbook-display > img,
+.macbook-display > .empty-placeholder,
+.macbook-display > .reflection-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Thin hinge separator line */
+.macbook-hinge {
+  width: 105%;
+  height: 3px;
+  background: linear-gradient(to bottom, #505054 0%, #38383c 100%);
+  position: relative;
+  z-index: 1;
+}
+
+/* Base / keyboard deck — wider and tapered */
+.macbook-base {
+  width: 108%;
+  height: 18px;
+  background: linear-gradient(to bottom, #3a3a3c 0%, #2a2a2c 60%, #1e1e20 100%);
+  border-radius: 0 0 12px 12px;
+  position: relative;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.55);
+}
+
+/* MagSafe / hinge notch indent at top-center of base */
+.macbook-base::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16%;
+  height: 4px;
+  background: #141416;
+  border-radius: 0 0 5px 5px;
+}
+
+/* Subtle speaker grille dots (decorative left/right edges) */
+.macbook-base::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.12) 0px,
+    rgba(255,255,255,0.12) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  border-radius: 2px;
+}
+
+/* Silver / Light Variant */
+.device-macbook.silver .macbook-lid {
+  background: #d0d0d2;
+  border-color: rgba(0,0,0,0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    0 0 0 0.5px rgba(0,0,0,0.25);
+}
+.device-macbook.silver .macbook-hinge {
+  background: linear-gradient(to bottom, #c4c4c6, #b0b0b2);
+}
+.device-macbook.silver .macbook-base {
+  background: linear-gradient(to bottom, #d0d0d2 0%, #b8b8ba 60%, #a8a8aa 100%);
+}
+.device-macbook.silver .macbook-camera-dot {
+  background: #a0a0a2;
+}
+
+/* 3. iPhone Mobile Silhouette */
+.device-phone {
+  background-color: #09090b;
+  border: 10px solid #18181b;
+  border-radius: 40px;
+  width: 310px;
+  aspect-ratio: 9/19;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  transform: translateZ(25px);
+}
+
+.phone-island {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85px;
+  height: 24px;
+  background-color: #000000;
+  border-radius: 20px;
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.phone-content {
+  width: 100%;
+  height: 100%;
+  background-color: #12131a;
+  position: relative;
+}
+
+/* Inner screenshot display — always fills parent absolutely */
+.screenshot-display {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Override for phone-content: needs relative base */
+.phone-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #0d0d12;
+}
+
+/* Fitting modifiers */
+.fit-contain {
+  object-fit: contain;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.fit-stretch {
+  object-fit: fill;
+}
+
+/* Empty UI display state when no screenshot */
+.empty-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 20px;
+}
+
+.empty-placeholder-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.5;
+}
+
+/* Color Pickers & controls input styling */
+.color-inputs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.color-input-wrapper {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.color-input-native {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.color-text-input {
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  outline: none;
+}
+
+.color-text-input:focus {
+  border-color: var(--brand-primary);
+}
+
+/* Keyboard Shortcut Tip Overlay */
+.shortcut-tips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+  background-color: rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin-top: auto;
+}
+
+/* Glass panel customization overlays */
+.canvas-resize-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: rgba(15, 16, 22, 0.85);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Shadow / reflection options */
+.reflection-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.03) 30%,
+    transparent 40%
+  );
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Media Query Responsiveness */
+@media (max-width: 1024px) {
+  .app-workspace {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .app-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    height: auto;
+    overflow-y: visible;
+  }
+  .app-preview-area {
+    padding: 20px;
+    min-height: 400px;
+  }
+}
